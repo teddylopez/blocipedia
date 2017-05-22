@@ -1,4 +1,6 @@
-require 'rspec/rails'
+require 'rails/all'
+
+require File.expand_path("../../config/environment", __FILE__)
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
