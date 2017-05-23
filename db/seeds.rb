@@ -3,8 +3,8 @@ require 'random_data'
 # Create Wikis
 50.times do
   Wiki.create!(
-    title:  RandomData.random_sentence,
-    body:   RandomData.random_paragraph
+    title:  Faker::ChuckNorris.fact,
+    body:   Faker::ChuckNorris.fact
   )
 end
 wikis = Wiki.all

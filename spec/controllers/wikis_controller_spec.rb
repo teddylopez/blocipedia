@@ -1,5 +1,6 @@
-require 'rails_helper'
-include RandomData
+require 'rspec/rails'
+include Faker
+include Devise
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
@@ -7,7 +8,7 @@ end
 
 RSpec.describe WikisController, type: :controller do
 
-  let(:my_wiki) { Wiki.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
+  let(:my_wiki) { create(:wiki) }
 
   describe "GET #index" do
     it "returns http success" do
@@ -40,16 +41,16 @@ RSpec.describe WikisController, type: :controller do
 
     describe "POST create" do
       it "increases the number of Wiki by 1" do
-        expect{wiki :create, wiki: {title: RandomData.random_sentence, body: RandomData.random_paragraph}}.to change(Wiki,:count).by(1)
+        expect{wiki :create, wiki: {title: Faker::ChuckNorris.fact, body: Faker::ChuckNorris.fact}}.to change(Wiki,:count).by(1)
       end
 
       it "assigns the new wiki to @wiki" do
-        wiki :create, wiki: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
+        wiki :create, wiki: {title: Faker::ChuckNorris.fact, body: Faker::ChuckNorris.fact}
         expect(assigns(:wiki)).to eq Wiki.last
       end
 
       it "redirects to the new wiki" do
-        wiki :create, wiki: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
+        wiki :create, wiki: {title: Faker::ChuckNorris.fact, body: Faker::ChuckNorris.fact}
         expect(response).to redirect_to Wiki.last
       end
     end
@@ -94,8 +95,8 @@ RSpec.describe WikisController, type: :controller do
 
   describe "PUT update" do
     it "updates wiki with expected attributes" do
-      new_title = RandomData.random_sentence
-      new_body = RandomData.random_paragraph
+      new_title = Faker::ChuckNorris.fact
+      new_body = Faker::ChuckNorris.fact
 
       put :update, id: my_wiki.id, wiki: {title: new_title, body: new_body}
 
@@ -106,8 +107,8 @@ RSpec.describe WikisController, type: :controller do
     end
 
     it "redirects to the updated wiki" do
-      new_title = RandomData.random_sentence
-      new_body = RandomData.random_paragraph
+      new_title = Faker::ChuckNorris.fact
+      new_body = Faker::ChuckNorris.fact
 
       put :update, id: my_wiki.id, wiki: {title: new_title, body: new_body}
       expect(response).to redirect_to my_wiki
