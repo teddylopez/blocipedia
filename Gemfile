@@ -32,6 +32,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'shoulda'
+  gem 'shoulda-matchers', require: false
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'pry-rails'

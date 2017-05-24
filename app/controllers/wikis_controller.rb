@@ -18,14 +18,12 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new(wiki_params)
-    @wiki.title = params[:wiki][:title]
-    @wiki.body = params[:wiki][:body]
 
     if @wiki.save
-      #flash[:notice] = "Entry was saved."
+      flash[:notice] = "\"#{@wiki.title}\" was saved."
       redirect_to @wiki
     else
-      #flash.now[:alert] = "There was an error saving the entry. Please try again."
+      flash.now[:alert] = "There was an error saving the entry. Please try again."
       render :new
     end
   end
@@ -41,10 +39,10 @@ class WikisController < ApplicationController
     @wiki.body = params[:wiki][:body]
 
     if @wiki.save
-      #flash[:notice] = "Entry was updated."
+      flash[:notice] = "\"#{@wiki.title}\" has been updated."
       redirect_to @wiki
     else
-      #flash.now[:alert] = "There was an error saving the entry. Please try again."
+      flash.now[:alert] = "There was an error updating the entry. Please try again."
       render :edit
     end
   end
@@ -53,10 +51,10 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
 
     if @wiki.destroy
-      #flash[:notice] = "\"#{@post.title}\" was deleted successfully."
+      flash[:notice] = "\"#{@wiki.title}\" has been deleted."
       redirect_to wikis_path
     else
-      #flash.now[:alert] = "There was an error deleting the post."
+      flash.now[:alert] = "There was an error deleting the post."
       render :show
     end
   end
