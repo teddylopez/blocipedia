@@ -1,5 +1,5 @@
 class WikisController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show, :about]
 
   #after_action :verify_authorized, except: :index
   #after_action :verify_policy_scoped, except: :index
@@ -14,12 +14,12 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    authorize @wiki
   end
 
   def create
     @wiki = Wiki.new(wiki_params)
-    @wiki.title = params[:wiki][:title]
-    @wiki.body = params[:wiki][:body]
+    authorize @wiki
 
     if @wiki.save
       #flash[:notice] = "Entry was saved."
@@ -32,10 +32,12 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def update
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
     @wiki.assign_attributes(wiki_params)
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
@@ -51,6 +53,7 @@ class WikisController < ApplicationController
 
     def destroy
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
 
     if @wiki.destroy
       #flash[:notice] = "\"#{@post.title}\" was deleted successfully."
