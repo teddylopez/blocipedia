@@ -23,6 +23,7 @@ gem 'bootstrap-sass', '3.2.0.2'
 gem 'figaro'
 gem 'devise'
 gem "pundit"
+gem 'stripe'
 
 # Used for encrypting User passwords
 gem 'bcrypt'

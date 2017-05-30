@@ -1,7 +1,10 @@
+require 'spec_helper'
 require 'rspec/rails'
+require 'devise'
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
+  Devise::Test::ControllerHelpers
 end
 
 RSpec.describe WikisController, type: :controller do
