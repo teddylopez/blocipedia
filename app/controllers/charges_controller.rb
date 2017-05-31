@@ -2,14 +2,11 @@ class ChargesController < ApplicationController
 
   def create
     @user = current_user
-
     #Creates a Stripe Customer object, for associating with the charge.
     customer = Stripe::Customer.create(
       email: current_user.email,
       card: params[:stripeToken]
     )
-
-
   # Payment being made
   charge = Stripe::Charge.create(
     customer: customer.id,
@@ -21,7 +18,6 @@ class ChargesController < ApplicationController
   @user.update_attributes(role: 'premium')
   @user.role = 'premium'
   @user.save
-
   flash[:notice] = "Thanks for the payment, #{current_user.email}! You can now create and edit private wikis."
   redirect_to root_path
 
@@ -33,10 +29,15 @@ class ChargesController < ApplicationController
   end
 
   def downgrade
-    #@user = User.find(params[:id])
-    #@user.update_attribute(:role, 'standard')
+    @user.update_attributes(role: 'standard')
     @user.role = 'standard'
-    redirect_to root_path
+    if @user.save
+      flash[:notice] = "You've been downgraded to standard. Your private wikis are now public."
+      redirect_to root_path
+    else
+      flash[:error] = "There was an error editing your account. Please try again."
+      redirect_to root_path
+    end
   end
 
   def new
