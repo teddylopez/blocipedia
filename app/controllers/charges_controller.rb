@@ -32,6 +32,13 @@ class ChargesController < ApplicationController
     redirect_to new_charge_path
   end
 
+  def downgrade
+    #@user = User.find(params[:id])
+    #@user.update_attribute(:role, 'standard')
+    @user.role = 'standard'
+    redirect_to root_path
+  end
+
   def new
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",

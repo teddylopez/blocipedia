@@ -36,8 +36,20 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<br>
+<div>
+  <b>Current level:</b> <%= current_user.role %> <br />
+  <% if current_user.premium? %>
+    <%= link_to 'Downgrade to Standard', method: :downgrade, data: { confirm: "Are you sure you want to downgrade to standard?" }, class: 'btn btn-warning'%>
+    <% end %>
+  <% if current_user.standard? %>
+    <%= link_to "Upgrade to Premium membership", new_charge_path %>
+    <p>The upgrade price is $15 USD</p>
+    <%= button_to "Upgrade to premium", new_charge_path, data: { confirm: "Are you sure you want to upgrade to premium?" }, class: 'btn btn-warning'%>
+  <% end %>
+</div>
 
+<br>
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
