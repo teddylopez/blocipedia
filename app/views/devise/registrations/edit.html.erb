@@ -40,12 +40,12 @@
 <div>
   <b>Current level:</b> <%= current_user.role %> <br />
   <% if current_user.premium? %>
-    <%= link_to 'Downgrade to Standard membership', method: :downgrade, data: { confirm: "Are you sure you want to downgrade to standard?" }, class: 'btn btn-warning'%>
+  <br>
+    <%= link_to 'Downgrade to Standard membership', downgrade_path, data: { confirm: "Are you sure you want to downgrade to standard?" }, class: 'btn btn-warning'%>
     <% end %>
   <% if current_user.standard? %>
-    <%= link_to "Upgrade to Premium membership", new_charge_path %>
-    <p>The upgrade price is $15 USD</p>
-    <%= button_to "Upgrade to premium", new_charge_path, data: { confirm: "Are you sure you want to upgrade to premium?" }, class: 'btn btn-warning'%>
+  <br>
+    <%= link_to "Upgrade to a premium account for $15.00", new_charge_path, class: 'btn btn-info'%>
   <% end %>
 </div>
 

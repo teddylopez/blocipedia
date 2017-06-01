@@ -18,7 +18,7 @@ class ChargesController < ApplicationController
   @user.update_attributes(role: 'premium')
   @user.role = 'premium'
   @user.save
-  flash[:notice] = "Thanks for the payment, #{current_user.email}! You can now create and edit private wikis."
+  flash[:notice] = "Thanks for the payment, #{current_user.email}! With your premium account you can now create and edit private wikis."
   redirect_to root_path
 
   # Stripe will send back CardErrors, with friendly messages when something goes wrong.
@@ -26,18 +26,6 @@ class ChargesController < ApplicationController
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
-  end
-
-  def downgrade
-    @user.update_attributes(role: 'standard')
-    @user.role = 'standard'
-    if @user.save
-      flash[:notice] = "You've been downgraded to standard. Your private wikis are now public."
-      redirect_to root_path
-    else
-      flash[:error] = "There was an error editing your account. Please try again."
-      redirect_to root_path
-    end
   end
 
   def new
