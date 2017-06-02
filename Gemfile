@@ -24,6 +24,10 @@ gem 'figaro'
 gem 'devise'
 gem "pundit"
 gem 'stripe'
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
+gem 'pygments.rb', '~> 0.6.3'
 
 # Used for encrypting User passwords
 gem 'bcrypt'

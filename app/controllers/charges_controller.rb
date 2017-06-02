@@ -35,11 +35,4 @@ class ChargesController < ApplicationController
       amount: 15_00
     }
   end
-
-  private
-
-  def upgrade_user_role
-    @user.role = 'premium'
-  end
-
 end
