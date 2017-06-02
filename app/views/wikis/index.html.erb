@@ -2,11 +2,21 @@
 <br>
 <%= link_to 'New Wiki', new_wiki_path, class: 'btn btn-success' %>
 <hr>
-<% @wikis.each do |wiki| %>
+<% @public_wikis.each do |wiki| %>
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
         <%= link_to wiki.title, wiki %>
+      </h4>
+    </div>
+  </div>
+<% end %>
+
+<% @wikis.each do |wiki| %>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <% if wiki.private?  %> PRIVATE: <%= link_to wiki.title, wiki %><% end %>
       </h4>
     </div>
   </div>

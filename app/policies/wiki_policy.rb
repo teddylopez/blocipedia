@@ -4,6 +4,10 @@ class WikiPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    user.present? #&& (!wiki.private || user.admin? || wiki.user_id = user.id)
+  end
+
   def create?
     user.present?
   end
@@ -13,7 +17,14 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def edit?
-    create?
+    case record.private
+      when false
+        true if user.present?
+      when true
+        true if user.present? && (user.admin? || record.user_id = user.id)
+      else
+        true
+      end
   end
 
   def new?
@@ -21,9 +32,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def destroy?
-    # user.admin?
-    # user.present?
-    create?
+    user.present? && (user.admin? || record.user_id == user.id)
   end
 
   private

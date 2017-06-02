@@ -6,7 +6,8 @@ class WikisController < ApplicationController
 
   def index
     @wikis = Wiki.all
-    authorize @wikis
+    @public_wikis = Wiki.where(private: false)
+    authorize @public_wikis
   end
 
   def show
@@ -16,11 +17,13 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    @wiki.user_id = current_user.id
     authorize @wiki
   end
 
   def create
     @wiki = Wiki.new(wiki_params)
+    @wiki.user_id = current_user.id
     authorize @wiki
 
     if @wiki.save
