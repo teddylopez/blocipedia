@@ -4,7 +4,7 @@ require 'random_data'
 5.times do
   Wiki.create!(
     title:  Faker::ChuckNorris.fact,
-    body:   Faker::ChuckNorris.fact
+    body:   Faker::ChuckNorris.fact,
   )
 end
 wikis = Wiki.all
