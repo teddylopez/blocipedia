@@ -5,10 +5,7 @@ class WikisController < ApplicationController
   #after_action :verify_policy_scoped, except: :index
 
   def index
-    @wikis = Wiki.all
-    @private_wikis = Wiki.where(private: true)
-    @public_wikis = Wiki.where(private: false)
-    #authorize @public_wikis
+    @wikis = policy_scope(Wiki)
   end
 
   def show
