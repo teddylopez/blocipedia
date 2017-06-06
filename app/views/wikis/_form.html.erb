@@ -14,6 +14,9 @@
       <% end %>
     </div>
   <% end %>
+  <% if @wiki.private %>
+    <%= render partial: 'collaborators/form', locals: { f: f } %>
+  <% end %>
   <div class="form-group">
     <%= f.submit "Save", class: 'btn btn-success' %>
   </div>
