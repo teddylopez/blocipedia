@@ -35,15 +35,17 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @users = User.all
+    @collaborator = Collaborator.new
     authorize @wiki
   end
 
   def update
     @wiki = Wiki.find(params[:id])
     authorize @wiki
+
     @wiki.assign_attributes(wiki_params)
-    @wiki.title = params[:wiki][:title]
-    @wiki.body = params[:wiki][:body]
+    @wiki.user_ids = params[:wiki][:user_ids] if params[:wiki][:user_ids].present?
 
     if @wiki.save
       flash[:notice] = "\"#{@wiki.title}\" has been updated."
@@ -70,7 +72,7 @@ class WikisController < ApplicationController
   private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private)
+    params.require(:wiki).permit(:title, :body, :private, :user, :user_ids)
   end
 
 end
