@@ -1,0 +1,10 @@
+%h1 New Wiki Entry
+.row
+  .col-md-4
+    %p Guidelines for wikis
+    %ul
+      %li Make sure it rhymes.
+      %li Don't use the letter "A".
+      %li The incessant use of hashtags will get you banned.
+  .col-md-8
+    = render partial: 'form', locals: { wiki: @wiki }

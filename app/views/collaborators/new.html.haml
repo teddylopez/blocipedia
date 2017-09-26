@@ -1,0 +1,9 @@
+%h1 Add Collaborator
+= form_for [@wiki] do |f|
+  = collection_check_boxes(:wiki, :user_ids, User.all - [f.object.user], :id, :email) do |u|
+    .checkbox
+      = u.label do
+        = u.check_box
+        = u.object.email
+  .form-group
+    = f.submit "Save", class: 'btn btn-success'
