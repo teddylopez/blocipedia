@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20170926002728) do
     t.boolean  "private",    default: false
     t.integer  "user_id"
     t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null:rails g migration add_slug_to_wikis slug:string:uniq false
+    t.datetime "updated_at",                 null: false
     t.string   "slug"
   end
 
