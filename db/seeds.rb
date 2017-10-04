@@ -31,7 +31,8 @@ premium.save!
 admin = User.new(
     email:      'admin@bpedia.com',
     password:   'password',
-    role:       'admin'
+    role:       'admin',
+    admin:      true
 )
 admin.skip_confirmation!
 admin.save!
