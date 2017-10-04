@@ -1,14 +1,5 @@
 require 'random_data'
 
-# Create Wikis
-5.times do
-  Wiki.create!(
-    title:  Faker::ChuckNorris.fact,
-    body:   Faker::ChuckNorris.fact,
-  )
-end
-wikis = Wiki.all
-
 #Create a standard member
 standard = User.new(
     email:      'standard@bpedia.com',
@@ -36,6 +27,16 @@ admin = User.new(
 )
 admin.skip_confirmation!
 admin.save!
+
+# Create Wikis
+5.times do
+  Wiki.create!(
+    title:  Faker::ChuckNorris.fact,
+    body:   Faker::ChuckNorris.fact,
+    user:   admin
+  )
+end
+wikis = Wiki.all
 
 puts "Seed finished"
 puts "#{User.count} users created"
