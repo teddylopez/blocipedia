@@ -1,15 +1,25 @@
 ActiveAdmin.register Wiki do
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+  permit_params do
+    params = [:user, :title, :body, :private]
+  end
 
+  index do
+      column :id
+      column :title
+      column :private
+      column :user
+      column :created_at
+      column :updated_at
+      actions
+  end
+
+  form do |f|
+    f.inputs "New Wiki" do
+      f.input :user, :label => "User"
+      f.input :title, :label => "Title"
+      f.input :body, :label => "Body"
+      f.input :private, :label => "Private"
+      f.actions
+    end
+  end
 end
