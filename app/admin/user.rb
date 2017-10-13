@@ -1,7 +1,5 @@
 ActiveAdmin.register User do
-  permit_params do
-    params = [:email, :password]
-  end
+  permit_params :email, :password, role_ids: []
 
   index do
     column :email
@@ -14,9 +12,10 @@ ActiveAdmin.register User do
   end
 
   form do |f|
-    f.inputs "New Admin User" do
+    f.inputs "New User" do
       f.input :email, :label => "Email"
       f.input :password, :label => "Password"
+      f.input :role, :label => "Role"
       f.actions
     end
   end

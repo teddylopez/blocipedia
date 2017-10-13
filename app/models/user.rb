@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :collaborators
   has_many :wikis, through: :collaborators
 
-  after_initialize :init
+  before_save :init
 
   enum role: [:standard, :premium, :admin]
 
