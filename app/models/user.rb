@@ -9,11 +9,21 @@ class User < ActiveRecord::Base
   has_many :wikis, through: :collaborators
 
   before_save :init
+  after_initialize :role_check
+  after_save :role_check
 
   enum role: [:standard, :premium, :admin]
 
   def init
     self.role ||= :standard
+  end
+
+  def role_check
+    if self.role == :admin
+      self.admin == true
+    else
+      self.admin == false
+    end
   end
 
 end

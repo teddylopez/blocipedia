@@ -37,7 +37,7 @@ admin.save!
   )
 end
 wikis = Wiki.all
-
+User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true)
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Wiki.count} wikis created"
