@@ -23,12 +23,7 @@ class UserController < ApplicationController
   def update
     @user = current_user
     @user.assign_attributes(user_params)
-    if @user.role == :admin
-      @user.admin == true
-    else
-      @user.admin == false
-    end
-
+    role_check
     if @user.save
       flash[:notice] = "\"#{@user.email}\" has been updated."
       redirect_to @user
@@ -54,14 +49,6 @@ class UserController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :role, :admin)
-  end
-
-  def role_check
-    if self.role == :admin
-      self.admin == true
-    else
-      self.admin == false
-    end
   end
 
 end

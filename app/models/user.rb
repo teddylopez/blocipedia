@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
   enum role: [:standard, :premium, :admin]
 
+  private
+
   def init
     self.role ||= :standard
   end
