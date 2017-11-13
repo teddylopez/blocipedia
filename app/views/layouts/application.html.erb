@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+  <title>noted</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <header class="navbar navbar-default" role="navigation">
+  <div class="navbar-inner">
+    <div class="container">
+        <ul class="nav nav-tabs">
+          <li><%= link_to "noted", root_path %></li>
+          <li><%= link_to "Notes", wikis_path %></li>
+          <li><%= link_to "About", about_path %></li>
+
+          <div class="pull-right user-info">
+            <% if current_user.present? %>
+            <div class="pull-right ted-link">
+              <strong><%= current_user.email %></strong> <br/>
+            </div>
+            <div class="pull-right ted-link">
+              <%= link_to "Sign Out", session_path(current_user), method: :delete %>
+            </div>
+            <% else %>
+              <%= link_to "Sign In", new_session_path %> or
+              <%= link_to "Sign Up", new_user_path %>
+            <% end %>
+          </div>
+        </ul>
+        </header>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <div><%= link_to "noted", root_path %> | <%= link_to "Notes", wikis_path %> |   <%= link_to "About", about_path %></div>
+
+  <% if user_signed_in? %>
+    Signed in as: <strong><%= current_user.email %></strong> |
+    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <% else %>
+    <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %> -
+    <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %>
+  <% end %>
+
+<%= yield %>
+
+</body>
+</html>
