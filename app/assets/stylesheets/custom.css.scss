@@ -16,13 +16,14 @@ $white: #FFFFFF;
 }
 
 .user-nav {
-  margin-bottom: 10;
+  margin: 10;
   display: inline;
   float: right;
 }
 
 .container {
   padding: 2rem 0;
+  margin-left: 0 auto;
 }
 
 
@@ -87,11 +88,15 @@ $white: #FFFFFF;
   }
   nav {
     float:right;
+    padding-left: 5;
     a {
       color: $dark;
       font-weight: 700;
       text-decoration: none;
       margin: 2rem;
+    }
+    li {
+      padding-left: 3;
     }
   }
   .content {
