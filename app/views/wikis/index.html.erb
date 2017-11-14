@@ -1,0 +1,18 @@
+<div class="header-container">
+  <h1 class="header">All notes
+  <div class="header-button"></div>
+  <%= link_to 'New note', new_wiki_path, class: 'btn btn-success' %>
+  </h1>
+<hr>
+<br/>
+
+<h3>Below is a list of all public notes:</h3>
+  <% @wikis.each do |wiki| %>
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= link_to wiki.title, wiki %>
+        </h4>
+      </div>
+    </div>
+  <% end %>
