@@ -9,7 +9,16 @@ $white: #FFFFFF;
 .wrapper {
   width: 1900px;
   max-width: 90%;
-  margin: 0 auto;
+  margin: 1rem   auto;
+  a {
+    text-decoration: none;
+  }
+}
+
+.user-nav {
+  margin-bottom: 10;
+  display: inline;
+  float: right;
 }
 
 .container {
@@ -62,13 +71,14 @@ $white: #FFFFFF;
   background-image: url(home-banner.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 0 0 1rem 0;
   header :{
     padding: 2rem 0;
   }
   #logo {
     color: $white;
     font-weight: 700;
-    font-size: 1.35rem;
+    font-size: 1.75rem;
     float: left;
     margin: 0;
     span {
@@ -81,11 +91,11 @@ $white: #FFFFFF;
       color: $dark;
       font-weight: 700;
       text-decoration: none;
-      margin-left: 2rem;
+      margin: 2rem;
     }
   }
   .content {
-    padding: 5rem 0;
+    padding: 10rem 0;
     .title, .sub_title {
       color: $dark;
       text-align: center;
