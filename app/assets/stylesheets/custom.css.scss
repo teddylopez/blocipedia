@@ -1,0 +1,82 @@
+// - - - - - - - - - - Variables - - - - - - - - - - //
+
+$dark: #212529;
+$white: #FFFFFF;
+
+
+// - - - - - - - - - - Global Styles - - - - - - - - - - //
+
+.wrapper {
+  width: 1900px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.main-content {
+  padding: 5rem;
+  margin: 0;
+}
+
+.button {
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  padding: .5rem 3rem;
+  font-weight: 700;
+  color: $white;
+  text-decoration: none;
+  text-align: center;
+}
+
+.button_free {
+  background: #4286f4;
+}
+
+.button_premium {
+
+}
+
+// - - - - - - - - - - Banner Styles - - - - - - - - - - //
+
+#banner {
+  background-image: url(home-banner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  header :{
+    padding: 2rem 0;
+  }
+  #logo {
+    color: $white;
+    font-weight: 700;
+    font-size: 1.35rem;
+    float: left;
+    margin: 0;
+    span {
+      font-weight: 400;
+    }
+  }
+  nav {
+    float:right;
+    a {
+      color: $dark;
+      font-weight: 700;
+      text-decoration: none;
+      margin-left: 2rem;
+    }
+  }
+  .content {
+    padding: 5rem 0;
+    .title, .sub_title {
+      color: $dark;
+      text-align: center;
+    }
+    .title {
+      font-size: 3.5rem;
+      margin:0;
+    }
+    .sub_title {
+      font-weight: 400;
+      line-height: 1.75;
+    }
+  }
+}

@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   get 'downgrade' => 'user#downgrade'
   get 'about' => 'welcome#about'
-  root to: "welcome#index"
+  get 'home' => 'welcome#home'
+  root to: "welcome#home"
 
 
 
