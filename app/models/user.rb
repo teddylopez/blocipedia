@@ -22,9 +22,9 @@ class User < ActiveRecord::Base
 
   def role_check
     if self.role == :admin
-      self.admin == true
+      self.admin = true
     else
-      self.admin == false
+      self.admin = false
     end
   end
 

@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   def show
     if current_user.present?
@@ -16,39 +16,23 @@ class UserController < ApplicationController
     @user = User.new
   end
 
-  def edit
-    @user = current_user
-  end
-
-  def update
-    @user = current_user
-    @user.assign_attributes(user_params)
-    role_check
-    if @user.save
-      flash[:notice] = "\"#{@user.email}\" has been updated."
-      redirect_to @user
-    else
-      flash.now[:alert] = "There was an error updating the entry. Please try again."
-      render :edit
-    end
-  end
-
   def downgrade
-    current_user.role = 'standard'
-    if current_user.save
-      flash[:notice] = "You've been downgraded to a standard account. Your private wikis are now public."
-      current_user.wikis.each { |wiki| wiki.update_attribute(:private, false) }
-      redirect_to root_path
+    @user = User.find(params[:id])
+    @user.role = 'standard'
+
+    if @user.save
+      flash[:notice] = "You've been downgraded to standard. Your private wikis are now public."
+      redirect_to :back
     else
-      flash[:error] = "There was an error editing your account. Please try again."
-      redirect_to root_path
+      flash[:error] = "There was an error creating your account. Please try again."
+      redirect_to :back
     end
-  end
 
-  private
+    @user_wikis = @user.wikis.where(private: true)
 
-  def user_params
-    params.require(:user).permit(:email, :role, :admin)
+    @user_wikis.each do |makepub|
+      makepub.update_attributes(private: false)
+    end
   end
 
 end

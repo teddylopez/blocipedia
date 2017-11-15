@@ -15,6 +15,23 @@ $white: #FFFFFF;
   }
 }
 
+.notice-wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(135, 216, 211, 0.95);
+  .notice, .alert {
+    margin: 0;
+    text-align: center;
+    padding: 2.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+  }
+}
+
 .user-nav {
   margin: 10;
   display: inline;
