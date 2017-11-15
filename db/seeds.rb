@@ -29,7 +29,7 @@ admin.skip_confirmation!
 admin.save!
 
 # Create Wikis
-5.times do
+35.times do
   Wiki.create!(
     title:  Faker::ChuckNorris.fact,
     body:   Faker::ChuckNorris.fact,

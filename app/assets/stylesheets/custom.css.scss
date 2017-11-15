@@ -43,6 +43,19 @@ $white: #FFFFFF;
   margin-left: 0 auto;
 }
 
+header {
+  position: fixed;
+  height: 7rem;
+  width: 100%;
+}
+
+.header-container {
+  display: block!important;
+  height: auto!important;
+  padding-bottom: 0;
+  overflow: visible!important;
+}
+
 
 .header .header-button {
     margin-left: 2rem;
@@ -75,12 +88,8 @@ $white: #FFFFFF;
   text-align: center;
 }
 
-.button_free {
-  background: #4286f4;
-}
-
-.button_premium {
-
+.author {
+  padding-top: 5rem;
 }
 
 // - - - - - - - - - - Banner Styles - - - - - - - - - - //

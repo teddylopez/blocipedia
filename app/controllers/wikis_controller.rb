@@ -6,7 +6,8 @@ class WikisController < ApplicationController
   #after_action :verify_policy_scoped, except: :index
 
   def index
-    @wikis = policy_scope(Wiki)
+    #@wikis = policy_scope(Wiki)
+    @wikis = Wiki.all.order("created_at DESC").paginate(page: params[:page], per_page: 5)
     @user = current_user
   end
 
