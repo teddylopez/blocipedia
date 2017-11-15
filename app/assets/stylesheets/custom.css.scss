@@ -88,6 +88,16 @@ header {
   text-align: center;
 }
 
+.btn {
+  text-decoration: none;
+}
+
+.btn-warning {
+  a{
+    color: $white;
+  }
+}
+
 .author {
   padding-top: 5rem;
 }
