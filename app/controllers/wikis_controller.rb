@@ -1,9 +1,7 @@
 class WikisController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :about]
   after_action :verify_authorized, :except => :index
-
-  #after_action :verify_authorized, except: :index
-  #after_action :verify_policy_scoped, except: :index
+  after_action :verify_policy_scoped, except: :index
 
   def index
     #@wikis = policy_scope(Wiki)
@@ -13,7 +11,6 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.friendly.find(params[:id])
-    authorize @wiki
   end
 
   def new
@@ -24,7 +21,7 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new(wiki_params)
-    @wiki.user_id = current_user.id
+    @wiki.user = current_user
     authorize @wiki
 
     if @wiki.save

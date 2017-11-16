@@ -5,6 +5,7 @@ class Wiki < ActiveRecord::Base
   has_many :collaborators
   has_many :users, through: :collaborators
 
+  scope :visible_to, -> (user) { user ? where(private: false) : 'There was an error.' }
 
   def private?
     self.private == true
