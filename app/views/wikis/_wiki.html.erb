@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>notes:</h3>
+  <% @wikis.each do |wiki| %>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="author">
+          <% if wiki.private? %> <span class="private">private note</span>
+          <br>
+            <%= link_to wiki.title, wiki %>
+          <br>
+          <% elsif wiki.private? == false %><%= link_to wiki.title, wiki %>
+          <% end %>
+          <small>
+            submitted <%= time_ago_in_words(wiki.created_at) %> ago by <%= wiki.user.email %>
+          </small>
+          <hr>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
