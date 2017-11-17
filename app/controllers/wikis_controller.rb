@@ -1,7 +1,8 @@
 class WikisController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :about]
-  after_action :verify_authorized, :except => :index
-  after_action :verify_policy_scoped, except: :index
+  #before_action :authenticate_user!, except: [:index, :show, :about]
+  after_action :verify_authorized, except: [:index, :show, :about]
+  before_filter :authenticate_user!
+  #after_action :verify_policy_scoped, except: :index
 
   def index
     #@wikis = policy_scope(Wiki)
@@ -15,7 +16,7 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
-    @wiki.user_id = current_user.id
+    @wiki.user = current_user
     authorize @wiki
   end
 
