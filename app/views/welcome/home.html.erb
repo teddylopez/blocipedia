@@ -1,9 +1,7 @@
+
 <!-- Home banner -->
 <section id="banner">
   <div class="wrapper">
-    <header>
-      <p id="logo"><span>no</span>ted</p>
-    </header>
     <div class="content">
       <h1 class="title">Share your ideas</h1>
       <h2 class="sub_title">Create public or private notes for you and your friends</h2>
@@ -19,7 +17,87 @@
 <!-- Main Content -->
 <div class="main-content">
   <div class="row">
-    <% if !current_user %>
+    <% if current_user && current_user.role == 'standard' %>
+      <div class="col-md-6">
+
+      <% if @my_wikis.empty? %>
+      <h2>You don't have any notes.</h2>
+        <div class="start-btn"><%= link_to 'Start writing!', new_wiki_path, class: 'btn btn-success' %></div>
+      <% else %>
+        <h2>Welcome back. Here are your notes:</h2>
+        <ul>
+          <% @my_wikis.each do |wiki| %>
+            <li><%= link_to wiki.title, wiki %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      </div>
+        <div class="col-md-6">
+          <h2>Premium accounts for privacy</h2>
+          <p>Upgrade to a premium account to keep your notes private, for you and your friends.
+          <br>
+          <br>
+          Choose whoever you want to make your notes available to by adding collaborators.
+          <div class="button_wrapper btn btn-warning"><%= link_to "Sign up for premium", new_charge_path %></div>
+          </p>
+
+          <h2>How are you liking noted?</h2>
+          <p><%= link_to "Let us know!", about_path %></p>
+          <h2>Trying to edit your account?</h2>
+          <p>You can do that <%= link_to 'here!', edit_user_registration_path %></p>
+        </div>
+      </div>
+
+    <% elsif current_user && current_user.role == 'premium' %>
+      <div class="col-md-6">
+        <h2>Thanks for being a premium member!</h2>
+        <% if @my_wikis.empty? %>
+          <h2>You don't have any notes.</h2>
+          <div class="start-btn"><%= link_to 'Start writing!', new_wiki_path, class: 'btn btn-success' %></div>
+        <% else %>
+          <h2>Welcome back. Here are your notes:</h2>
+          <ul>
+            <% @my_wikis.each do |wiki| %>
+              <li><%= link_to wiki.title, wiki %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
+        <div class="col-md-6">
+          <h2>How are you liking noted?</h2>
+          <p><%= link_to "Let us know!", about_path %></p>
+          <h2>Trying to edit your account?</h2>
+          <p>You can do that <%= link_to 'here!', edit_user_registration_path %></p>
+        </div>
+      </div>
+
+    <% elsif current_user && current_user.role == 'admin' %>
+      <div class="col-md-6">
+        <h2>Welcome, admin</h2>
+        <% if @my_wikis.empty? %>
+          <h2>You don't have any notes.</h2>
+          <div class="start-btn"><%= link_to 'Start writing!', new_wiki_path, class: 'btn btn-success' %></div>
+        <% else %>
+          <h2>Here are your notes:</h2>
+          <ul>
+            <% @my_wikis.each do |wiki| %>
+              <li><%= link_to wiki.title, wiki %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
+        <div class="col-md-6">
+          <h2>How are you liking noted?</h2>
+          <p><%= link_to "Let us know!", about_path %></p>
+          <h2>Trying to edit your account?</h2>
+          <p>You can do that <%= link_to 'here!', edit_user_registration_path %></p>
+        </div>
+      </div>
+
+    <% else %>
       <div class="col-md-6">
         <h2>Open, free, and collaborative</h2>
         <p>With noted, you can share, write, and publish notes that anybody can contribute to.
@@ -30,48 +108,9 @@
 
       <div class="col-md-6">
         <h2>Join today</h2>
-        <p>Start sharing your notes!</p>
-          <div class="button_wrapper btn btn-info"><%= link_to "Sign up for free", new_user_registration_path %></div>
-      </div>
-
-    <% elsif current_user.role == 0 %>
-      <div class="col-md-6">
-        <h2>Premium accounts for privacy</h2>
-        <p>Upgrade to a premium account to keep your notes private, for you and your friends.
-        <br>
-        <br>
-        Choose whoever you want to make your notes available to.
-        <div class="button_wrapper btn btn-warning"><%= link_to "Sign up for premium", new_charge_path %></div>
-        </p>
-      </div>
-        <div class="col-md-6">
-          <h2>How are you liking noted?</h2>
-          <p><%= link_to "Let us know!", about_path %></p>
-          <h2>Trying to edit your account?</h2>
-          <p>You can do that <%= link_to 'here!', edit_user_registration_path %></p>
+        <p>Not a member? Sign up now and start sharing your notes!</p>
+        <div class="button_wrapper btn btn-info"><%= link_to "Sign up for free", new_user_registration_path %></div>
         </div>
-      </div>
-
-      <% else current_user.role == 2 %>
-        <div class="col-md-6">
-          <h2>Thanks for being a premium member!</h2>
-          <p>Here are your private notes:</p>
-
-          <ul>
-            <%= current_user.wikis.each do |wiki| %>
-            <li><%= link_to wiki.title, wiki %></li>
-           </div>
-           <% end %>
-         </ul>
-
-        </div>
-          <div class="col-md-6">
-            <h2>How are you liking noted?</h2>
-            <p><%= link_to "Let us know!", about_path %></p>
-            <h2>Trying to edit your account?</h2>
-            <p>You can do that <%= link_to 'here!', edit_user_registration_path %></p>
-          </div>
-        </div>
-        <% end %>
+    <% end %>
   </div>
 </div>
