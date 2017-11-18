@@ -12,6 +12,7 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.friendly.find(params[:id])
+    #authorize @wiki
   end
 
   def new
@@ -73,7 +74,7 @@ class WikisController < ApplicationController
   private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :slug, :private, :user, :user_ids)
+    params.require(:wiki).permit(:title, :body, :slug, :private, :user_id, :user_ids => [])
   end
 
 end

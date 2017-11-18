@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :users
-  resources :wikis
+  resources :wikis, :path => "notes"
   resources :charges, only: [:new, :create]
   resources :wikis do
     resources :collaborators, only: [:new, :create, :destroy]

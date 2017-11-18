@@ -54,7 +54,7 @@
       <%= "You currently have  #{current_user.wikis.where(private: false).count.to_s} wikis." %>
       <br>
       <br>
-        <%= link_to "Upgrade to a premium account for $15.00", new_charge_path, class: 'btn btn-info'%>
+        <div class="btn btn-info"><%= link_to "Upgrade to a premium account for $9.99", new_charge_path %></div>
       <% end %>
     </div>
 

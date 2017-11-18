@@ -9,7 +9,7 @@ $white: #FFFFFF;
 .wrapper {
   width: 1900px;
   max-width: 90%;
-  margin: 1rem   auto;
+  margin: 1rem auto;
   a {
     text-decoration: none;
   }
@@ -126,20 +126,11 @@ header {
   margin: 0;
 }
 
-.button {
-  border: none;
-  outline: none;
-  border-radius: 2rem;
-  padding: .5rem 3rem;
-  font-weight: 700;
+.btn, .button-group {
+  text-decoration: none;
   color: $white;
-  text-decoration: none;
-  text-align: center;
-}
-
-.btn {
-  text-decoration: none;
-  a:link {
+  a, a:link, a:hover {
+    text-decoration: none;
     color: $white;
   }
 }
