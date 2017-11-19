@@ -33,6 +33,7 @@ gem 'pygments.rb', '~> 0.6.3'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'mail_form', '~> 1.7'
+gem 'sendgrid-ruby'
 
 # Used for encrypting User passwords
 gem 'bcrypt'
