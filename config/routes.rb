@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :wikis, :path => "notes"
+  resources :contacts, only: [:new, :create]
   resources :charges, only: [:new, :create]
   resources :wikis do
     resources :collaborators, only: [:new, :create, :destroy]
