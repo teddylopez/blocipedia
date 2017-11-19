@@ -4,30 +4,20 @@
 
   <div class="contact-form">
     <%= form_for @contact do |f| %>
-      <%= f.label :name %><br>
-      <%= f.text_field :name, required: true %>
-
+      <%= f.text_field :name, required: true, placeholder: "Name" %>
       <br>
-
-      <%= f.label :email %><br>
-      <%= f.email_field :email, required: true %>
-
+      <%= f.email_field :email, required: true, placeholder: "Email" %>
       <br>
-
-      <%= f.label :phone %><br>
-      <%= f.text_field :phone, required: false %>
-
+      <%= f.text_field :phone, required: false, placeholder: "Phone Number" %>
       <br>
-
-      <%= f.label :message %><br>
-      <%= f.text_area :message, as: :text %>
+      <%= f.text_area :message, as: :text, placeholder: "Message" %>
 
       <div class="hidden">
         <%= f.label :nickname %><br>
         <%= f.text_field :nickname, hint: 'leave this field blank' %>
       </div>
 
-      <div class="button_wrapper btn btn-info"><%= f.submit 'Send message' %></div>
+      <div class="submit-button"><%= f.submit 'Send message', id: "submit" %></div>
     <% end %>
   </div>
 </div>

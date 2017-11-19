@@ -3,7 +3,6 @@
 $dark: #212529;
 $white: #FFFFFF;
 
-
 // - - - - - - - - - - Global Styles - - - - - - - - - - //
 
 .wrapper {
@@ -40,6 +39,12 @@ $white: #FFFFFF;
   }
 }
 
+.alert {
+  margin: 0 auto;
+  margin-bottom: 0;
+  text-align: center;
+}
+
 .user-nav {
   margin: 10;
   display: inline;
@@ -62,37 +67,42 @@ $white: #FFFFFF;
 .contact-form {
   vertical-align: center;
   margin: 50px auto;
-  form {
     input {
       outline: none;
       display: block;
       width: 100%;
       padding: 5rem 0;
       border: none;
+      border-radius: 6px;
       border-bottom: 1px solid #ddd;
       background: transparent;
       margin-bottom: 10px;
-      font: 16px Arial, Helvetica, sans-serif;
+      font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
       height: 45px;
+        label {
+          outline: none;
+        }
     }
     textarea {
-      font: 16px Arial, Helvetica, sans-serif;
-      outline: none;
+      font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
       display: block;
       width: 100%;
+      height: 25rem;
       margin: 2rem 0;
       border: none;
     }
     a {
       text-decoration: none;
     }
-  }
+    .submit-button {
+      width: 24rem;
+    }
 }
+
 
 .container{
   max-width: 970px;
 }
-
 
 .control-group {
   label {
