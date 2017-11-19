@@ -17,12 +17,12 @@ class UsersController < ApplicationController
   end
 
   def downgrade
-    @user = User.find(params[:id])
+    @user = current_user
     @user.role = 'standard'
 
     if @user.save
       flash[:notice] = "You've been downgraded to standard. Your private wikis are now public."
-      redirect_to :back
+      redirect_to :root
     else
       flash[:error] = "There was an error creating your account. Please try again."
       redirect_to :back

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :collaborators, only: [:new, :create, :destroy]
   end
 
-  get 'downgrade' => 'user#downgrade'
+  get 'downgrade' => 'users#downgrade'
   get 'about' => 'welcome#about'
   get 'home' => 'welcome#home'
   root to: "welcome#home"
