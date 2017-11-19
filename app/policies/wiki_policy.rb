@@ -1,5 +1,7 @@
 class WikiPolicy < ApplicationPolicy
 
+    attr_reader :user
+
   def index?
     user.present?
   end

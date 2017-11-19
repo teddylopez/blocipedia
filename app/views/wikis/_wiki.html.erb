@@ -1,16 +1,18 @@
 <div class="container">
-  <% @wikis.each do |wiki| %>
+  <% @viewable_wikis.each do |wiki| %>
+  <% if (wiki.user == current_user) || !wiki.private? || wiki.collaborators.include?(current_user) %>
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="author">
-          <%= link_to wiki.title, wiki %> <% if wiki.private? %> <span class="private">private note</span> <% end %>
-          <br>
-          <small>
-            submitted <%= time_ago_in_words(wiki.created_at) %> ago by <%= wiki.user.email %>
-          </small>
-          <hr>
+            <%= link_to wiki.title, wiki %> <% if wiki.private? %> <span class="private">private note</span> <% end %>
+            <br>
+            <small>
+              submitted <%= time_ago_in_words(wiki.created_at) %> ago by <%= wiki.user.email %>
+            </small>
+            <hr>
         </div>
       </div>
     </div>
+    <% end %>
   <% end %>
 </div>

@@ -1,5 +1,3 @@
-require 'random_data'
-
 #Create a standard member
 standard = User.new(
     email:      'standard@bpedia.com',
@@ -27,17 +25,3 @@ admin = User.new(
 )
 admin.skip_confirmation!
 admin.save!
-
-# Create Wikis
-35.times do
-  Wiki.create!(
-    title:  Faker::ChuckNorris.fact,
-    body:   Faker::ChuckNorris.fact,
-    user:   admin
-  )
-end
-wikis = Wiki.all
-User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true)
-puts "Seed finished"
-puts "#{User.count} users created"
-puts "#{Wiki.count} wikis created"

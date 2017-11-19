@@ -4,5 +4,5 @@
 </h1>
 <hr>
 <br/>
-<%= render partial: 'wiki', locals: { wiki: @wiki  }%>
-<%= will_paginate @wikis, renderer: BootstrapPagination::Rails, previous_label: "Older", next_label: "Newer", inner_window: 1, outer_window: 0%>
+<%= render partial: 'wiki', locals: { wiki: @viewable_wikis  }%>
+<%= will_paginate @viewable_wikis, renderer: BootstrapPagination::Rails, previous_label: "Older", next_label: "Newer", inner_window: 1, outer_window: 0 %>

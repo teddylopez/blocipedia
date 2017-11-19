@@ -34,7 +34,9 @@
 <div class="wrapper">
   <nav>
       <%= link_to "home", root_path %>
-      <%= link_to "notes", wikis_path %>
+      <% if current_user %>
+        <%= link_to "notes", wikis_path %>
+      <% end %>
       <%= link_to "contact", new_contact_path %>
   <div class="user-nav">
     <% if user_signed_in? %>

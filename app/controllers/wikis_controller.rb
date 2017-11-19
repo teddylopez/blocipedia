@@ -1,18 +1,16 @@
 class WikisController < ApplicationController
-  #before_action :authenticate_user!, except: [:index, :show, :about]
   after_action :verify_authorized, except: [:index, :show, :about]
   before_filter :authenticate_user!
-  #after_action :verify_policy_scoped, except: :index
 
   def index
-    #@wikis = policy_scope(Wiki)
-    @wikis = Wiki.all.order("created_at DESC").paginate(page: params[:page], per_page: 5)
     @user = current_user
+    @wikis = Wiki.all.order("created_at DESC").paginate(page: params[:page], per_page: 5)
+    @viewable_wikis = Wiki.find_view(@user, current_user, @wikis)
   end
 
   def show
     @wiki = Wiki.friendly.find(params[:id])
-    #authorize @wiki
+    authorize @wiki
   end
 
   def new
@@ -74,7 +72,7 @@ class WikisController < ApplicationController
   private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :slug, :private, :user_id, :user_ids => [])
+    params.require(:wiki).permit(:title, :body, :slug, :private, :user_id, :user_ids)
   end
 
 end

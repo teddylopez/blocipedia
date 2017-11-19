@@ -4,11 +4,20 @@ class Wiki < ActiveRecord::Base
   belongs_to :user
   has_many :collaborators
   has_many :users, through: :collaborators
-
-  scope :visible_to, -> (user) { user ? where(private: false) : 'There was an error.' }
+  validates :title, presence: true, length: {minimum: 1 }
+  validates :body, presence: true
 
   def private?
     self.private == true
+  end
+
+  def self.find_view(user, current_user, wikis)
+    @viewable_wikis = []
+    wikis.each do |wiki|
+      if (wiki.user == current_user || !wiki.private? || wiki.collaborators.include?(user))
+        @viewable_wikis << wiki
+      end
+    end
   end
 
   private
