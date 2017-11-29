@@ -1,6 +1,5 @@
 <div class="container">
   <% @viewable_wikis.each do |wiki| %>
-  <% if (wiki.user == current_user) || !wiki.private? || wiki.collaborators.include?(current_user) %>
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="author">
@@ -13,6 +12,5 @@
         </div>
       </div>
     </div>
-    <% end %>
   <% end %>
 </div>

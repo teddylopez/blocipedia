@@ -1,11 +1,12 @@
 class WikisController < ApplicationController
+  require 'will_paginate/array'
   after_action :verify_authorized, except: [:index, :show, :about]
   before_filter :authenticate_user!
 
   def index
     @user = current_user
-    @wikis = Wiki.all.order("created_at DESC").paginate(page: params[:page], per_page: 5)
-    @viewable_wikis = Wiki.find_view(@user, current_user, @wikis)
+    @wikis = Wiki.all.order("created_at DESC")
+    @viewable_wikis = Wiki.find_view(@user, @wikis).paginate(page: params[:page], per_page: 5)
   end
 
   def show

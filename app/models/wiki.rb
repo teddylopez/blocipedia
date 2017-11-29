@@ -11,10 +11,10 @@ class Wiki < ActiveRecord::Base
     self.private == true
   end
 
-  def self.find_view(user, current_user, wikis)
+  def self.find_view(user, wikis)
     @viewable_wikis = []
     wikis.each do |wiki|
-      if (wiki.user == current_user || !wiki.private? || wiki.collaborators.include?(user))
+      if (wiki.user == user || !wiki.private? || wiki.collaborators.include?(user))
         @viewable_wikis << wiki
       end
     end
