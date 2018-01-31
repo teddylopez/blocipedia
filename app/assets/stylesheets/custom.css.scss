@@ -6,6 +6,7 @@ $white: #FFFFFF;
 // - - - - - - - - - - Global Styles - - - - - - - - - - //
 
 .wrapper {
+  font-family: 'Lato', sans-serif;
   width: 1900px;
   max-width: 90%;
   margin: 1rem auto;
@@ -60,10 +61,6 @@ $white: #FFFFFF;
   vertical-align: center;
 }
 
-.form-group {
-  font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-}
-
 .contact-form {
   vertical-align: center;
   margin: 50px auto;
@@ -77,14 +74,12 @@ $white: #FFFFFF;
       border-bottom: 1px solid #ddd;
       background: transparent;
       margin-bottom: 10px;
-      font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
       height: 45px;
         label {
           outline: none;
         }
     }
     textarea {
-      font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
       display: block;
       width: 100%;
       height: 25rem;
