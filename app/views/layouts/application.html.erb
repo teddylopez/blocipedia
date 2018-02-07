@@ -37,7 +37,7 @@
       <%= link_to "contact", new_contact_path %>
       <% if user_signed_in? %>
         <%= link_to "notes", wikis_path %>
-        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link logout' %>
+        <%= link_to "sign out", destroy_user_session_path, :class => 'navbar-link logout' %>
       <% end %>
 
   <div class="user-nav">
