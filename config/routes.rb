@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :charges, only: [:new, :create]
   resources :wikis do
     resources :collaborators, only: [:new, :create, :destroy]
+    get :autocomplete_user_email, :on => :collection
     collection do
       get 'search'
     end

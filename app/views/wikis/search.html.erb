@@ -2,7 +2,7 @@
 <h2> Results for: <%= @search %> </h2>
 
 <% @wikis.each do |wiki| %>
-  <% if (wiki.user == current_user) || !wiki.private? || wiki.collaborators.include?(current_user) %>
+  <% if !wiki.private? %>
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="author">
@@ -12,6 +12,14 @@
               submitted <%= time_ago_in_words(wiki.created_at) %> ago by <%= wiki.user.email %>
             </small>
             <hr>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="author">
+          <h3>No results for this particular search.</h3>
         </div>
       </div>
     </div>

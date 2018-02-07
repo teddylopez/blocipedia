@@ -34,18 +34,19 @@
 <div class="wrapper">
   <nav>
       <%= link_to "home", root_path %>
-      <% if current_user %>
-        <%= link_to "notes", wikis_path %>
-      <% end %>
       <%= link_to "contact", new_contact_path %>
+      <% if user_signed_in? %>
+        <%= link_to "notes", wikis_path %>
+        <%= link_to "log out", destroy_user_session_path, :class => 'navbar-link logout' %>
+      <% end %>
+
   <div class="user-nav">
     <% if user_signed_in? %>
       <div class="search-form">
         <%= form_tag search_wikis_path, method: :get do |f| %>
-          <%= text_field_tag :search, nil, placeholder: "Search notes" %>
-            <%= submit_tag("Search", :class => "btn btn-warning" ) %>
+          <%= text_field_tag :search, nil, :class => 'search-box', placeholder: "Search notes" %>
+          <%= submit_tag("Search", :class => "btn btn-warning" ) %>
         <% end %>
-
       </div>
     <% else %>
       <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link' %>

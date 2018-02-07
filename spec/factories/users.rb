@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  pw = RandomData.random_sentence
+  #pw = RandomData.random_sentence
 
   factory :user do
     name Faker::Name.unique.name

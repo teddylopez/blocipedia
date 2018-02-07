@@ -11,6 +11,13 @@ $white: #FFFFFF;
 
 nav {
   height: 4rem;
+  a {
+    padding-top: 4rem;
+  }
+}
+
+.logout {
+  margin-right: 35%;
 }
 
 .button-wrapper {
@@ -28,7 +35,6 @@ nav {
 
 .search-form {
   white-space: nowrap;
-  margin-right: 10%;
   input {
     border: 0;
   }
@@ -100,39 +106,62 @@ nav {
 .contact-form {
   vertical-align: center;
   margin: 50px auto;
-    input {
-      outline: none;
-      display: block;
-      width: 100%;
-      padding: 5rem 0;
-      border: none;
-      border-radius: 6px;
-      border-bottom: 1px solid #ddd;
-      background: transparent;
-      margin-bottom: 10px;
-      height: 45px;
-        label {
-          outline: none;
-        }
+  textarea {
+    display: block;
+    width: 100%;
+    height: 25rem;
+    margin: 2rem 0;
+    outline: 1px red;
     }
-    textarea {
-      display: block;
-      width: 100%;
-      height: 25rem;
-      margin: 2rem 0;
-      border: none;
-    }
-    a {
+  input {
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 5rem 0;
+    border: none;
+    border-radius: 6px;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    margin-bottom: 10px;
+    height: 45px;
+      label {
+        outline: none;
+      }
+  }
+  a {
       text-decoration: none;
     }
-    .submit-button {
-      width: 24rem;
-    }
+  .submit-button {
+    font-size: 10px;
+    width: 10rem;
+  }
+}
+
+form input[type=submit] {
+  display: inline-block;
+    font-weight: bold;
+    font-size: 1.0em;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 12px;
+    margin-right: 3px;
+    padding: 7px 16px 6px;
+    text-decoration: none;
+    background-color: white;
+    text-shadow: #000 0 1px 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0px rgba(255, 255, 255, 0.2) inset;
+    border: solid 1px #484e53;
+    border-color: #484e53;
+    border-top-color: #616a71;
+    border-right-color: #484e53;
+    border-bottom-color: #363b3f;
+    border-left-color: #484e53;
+    color: #efefef;
+    cursor: pointer;
 }
 
 
 .container{
-  max-width: 970px;
+  max-width: 100%;
 }
 
 .control-group {
@@ -203,7 +232,8 @@ ul li {
   }
   nav {
     float:right;
-    padding-left: 5;
+    padding-left: 5rem;
+    padding-right: 5rem;
     a {
       color: $dark;
       font-weight: 700;
@@ -229,4 +259,12 @@ ul li {
       line-height: 1.75;
     }
   }
+}
+
+.logged-in {
+  display: inline-block;
+}
+
+.navbar-link {
+  padding-left: 2rem;
 }
