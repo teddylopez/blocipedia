@@ -18,21 +18,7 @@
 <div class="main-content">
   <div class="row">
     <% if current_user && current_user.role == 'standard' %>
-      <div class="col-md-6">
-
-      <% if @my_wikis.empty? %>
-      <h2>You don't have any notes.</h2>
-        <div class="start-btn"><%= link_to 'Start writing!', new_wiki_path, class: 'btn btn-success' %></div>
-      <% else %>
-        <h2>Welcome back. Here are your notes:</h2>
-        <ul>
-          <% @my_wikis.each do |wiki| %>
-            <li><%= link_to wiki.title, wiki %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      </div>
+        <%= render partial: 'my_wikis' %>
         <div class="col-md-6">
           <h2>Premium accounts for privacy</h2>
           <p>Upgrade to a premium account to keep your notes private, for you and your friends.
@@ -50,20 +36,7 @@
       </div>
 
     <% elsif current_user && current_user.role == 'premium' %>
-      <div class="col-md-6">
-        <% if @my_wikis.empty? %>
-          <h2>You don't have any notes.</h2>
-          <div class="start-btn"><%= link_to 'Start writing!', new_wiki_path, class: 'btn btn-success' %></div>
-        <% else %>
-          <h2>Welcome back. Here are your notes:</h2>
-          <ul>
-            <% @my_wikis.each do |wiki| %>
-              <li><%= link_to wiki.title, wiki %></li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
-
+        <%= render partial: 'my_wikis' %>
         <div class="col-md-6">
           <h2>Thanks for being a premium member!</h2>
           <br>
@@ -75,20 +48,7 @@
       </div>
 
     <% elsif current_user && current_user.role == 'admin' %>
-      <div class="col-md-6">
-        <h2>Welcome, admin</h2>
-        <% if @my_wikis.empty? %>
-          <h2>You don't have any notes.</h2>
-          <div class="start-btn"><%= link_to 'Start writing!', new_wiki_path, class: 'btn btn-success' %></div>
-        <% else %>
-          <h2>Here are your notes:</h2>
-          <ul>
-            <% @my_wikis.each do |wiki| %>
-              <li><%= link_to wiki.title, wiki %></li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
+      <%= render partial: 'my_wikis' %>
 
         <div class="col-md-6">
           <h2>How are you liking noted?</h2>
