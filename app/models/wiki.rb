@@ -20,6 +20,10 @@ class Wiki < ActiveRecord::Base
     end
   end
 
+  def self.search(params)
+    wikis = Wiki.where("title like ? or body like ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
+  end
+
   private
 
   def make_public

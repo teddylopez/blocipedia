@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  autocomplete :user, :email
 
   def show
     if current_user.present?
