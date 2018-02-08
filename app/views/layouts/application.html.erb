@@ -46,7 +46,7 @@
       <div class="search-form">
         <%= form_tag search_wikis_path, method: :get do |f| %>
           <%= text_field_tag :search, nil, :class => 'search-box', placeholder: "Search notes" %>
-          <%= submit_tag("Search", :class => "btn btn-warning" ) %>
+          <%= submit_tag("Search", :class => "search-btn" ) %>
         <% end %>
       </div>
     <% else %>
