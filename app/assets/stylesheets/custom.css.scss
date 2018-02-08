@@ -14,6 +14,9 @@ nav {
   a {
     padding-top: 4rem;
   }
+  .logout {
+    padding-left: 5rem;
+  }
 }
 
 .logout {
@@ -223,8 +226,4 @@ ul li {
 
 .logged-in {
   display: inline-block;
-}
-
-.navbar-link {
-  padding-left: 2rem;
 }
