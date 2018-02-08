@@ -2,10 +2,10 @@
   <br>
   <%= @wiki.title %>
     <div class="button-group">
-      <% if policy(@wiki).edit? %>
+      <% if current_user == @wiki.user || current_user.role == 'admin' %>
         <div class="btn btn-success"><%= link_to "Edit", edit_wiki_path(@wiki) %></div>
       <% end %>
-      <% if policy(@wiki).destroy? %>
+      <% if current_user == @wiki.user || current_user.role == 'admin' %>
         <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this?'} %>
       <% end %>
     </div>

@@ -9,21 +9,23 @@ class WikisController < ApplicationController
     @viewable_wikis = Wiki.find_view(@user, @wikis).paginate(page: params[:page], per_page: 5)
   end
 
+  def search
+    @wikis = Wiki.search(params)
+    @search = params[:search]
+  end
+
   def show
     @wiki = Wiki.friendly.find(params[:id])
-    authorize @wiki
   end
 
   def new
     @wiki = Wiki.new
     @wiki.user = current_user
-    authorize @wiki
   end
 
   def create
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
-    authorize @wiki
 
     if @wiki.save
       flash[:notice] = "\"#{@wiki.title}\" was saved."
@@ -38,12 +40,10 @@ class WikisController < ApplicationController
     @wiki = Wiki.friendly.find(params[:id])
     @users = User.all
     @collaborator = Collaborator.new
-    authorize @wiki
   end
 
   def update
     @wiki = Wiki.friendly.find(params[:id])
-    authorize @wiki
 
     @wiki.assign_attributes(wiki_params)
     @wiki.user_ids = params[:wiki][:user_ids] if params[:wiki][:user_ids].present?

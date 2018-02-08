@@ -1,5 +1,6 @@
 class CollaboratorsController < ApplicationController
   before_action :set_wiki
+  autocomplete :user, :email
 
   def new
     @collaborator = Collaborator.new
