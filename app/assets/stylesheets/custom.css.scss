@@ -64,22 +64,14 @@ nav {
   top: 0;
   width: 100%;
   z-index: 999;
-  background: rgba(135, 216, 211, 0.95);
   .notice, .alert {
+    padding-top: 10px;
+    color: #616161;
+    height: 5rem;
     margin: 0;
+    margin-bottom: 0;
     text-align: center;
-    padding: 2.5rem 0;
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: #FFFFFF;
-    letter-spacing: 1px;
   }
-}
-
-.alert {
-  margin: 0 auto;
-  margin-bottom: 0;
-  text-align: center;
 }
 
 .user-nav {
