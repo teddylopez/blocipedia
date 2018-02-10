@@ -16,7 +16,4 @@ Rails.application.routes.draw do
   get 'about' => 'welcome#about'
   get 'home' => 'welcome#home'
   root to: "welcome#home"
-
-
-
 end
