@@ -24,5 +24,5 @@
       $('#notice-wrapper').fadeOut("slow", function() {
         $(this).remove();
       })
-    }, 2500);
+    }, 2000);
   });

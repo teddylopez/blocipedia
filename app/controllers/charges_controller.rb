@@ -18,7 +18,7 @@ class ChargesController < ApplicationController
   @user.update_attributes(role: 'premium')
   @user.role = 'premium'
   @user.save
-  flash[:notice] = "Thanks for the payment, #{current_user.email}! With your premium account you can now create and edit private wikis."
+  flash[:notice] = "You can now create and edit private wikis."
   redirect_to root_path
 
   # Stripe will send back CardErrors, with friendly messages when something goes wrong.
