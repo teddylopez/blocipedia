@@ -241,3 +241,35 @@ ul li {
 .logged-in {
   display: inline-block;
 }
+
+.pagination {
+  text-align: center;
+  margin: 0 0 3em 0;
+  a, .previous_page, .current, .next_page {
+    padding: .75em 1em;
+    margin: 0 .5em;
+    border-radius: .15em;
+    line-height: 20px;
+    text-decoration: none;
+    background: #FFFFFF;
+    font-weight: 700;
+    font-size: .7em;
+    font-size: normal;
+    color: #424652;
+    &:hover {
+      background: #4285F4;
+      color: #FFFFFF;
+    }
+  }
+  .current {
+    background: #4285F4;
+    color: #FFFFFF;
+  }
+  .disabled {
+    color: #C0C0C0;
+    &:hover {
+      color: #C0C0C0;
+      background: #FFFFFF;
+    }
+  }
+}
