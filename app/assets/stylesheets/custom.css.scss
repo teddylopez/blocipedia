@@ -38,6 +38,7 @@ nav {
 }
 
 .search-form {
+  font-size: 15px;
   white-space: nowrap;
   .glyphicon-search{
     font-size: 23px;
@@ -47,7 +48,6 @@ nav {
     font-size: 12px;
     height:25px;
     font-family: 'Lato';
-    color: white;
   }
 }
 
@@ -105,8 +105,8 @@ nav {
   }
     textarea {
       display: block;
-      width: 100%;
-      height: 25rem;
+      width: 70%;
+      height: 100rem;
       margin: 2rem 0;
       outline: 1px solid #ddd;
     }
@@ -115,13 +115,34 @@ nav {
       font-size: 12px;
       height:25px;
       font-family: 'Lato';
-      color: white;
     }
   a {
       text-decoration: none;
     }
 }
 
+.save-btn {
+  border-radius: 5px;
+  font-size: 12px;
+  height:25px;
+  font-family: 'Lato';
+}
+
+.form-inputs {
+  font-size: 15px;
+}
+
+.contact-form {
+  .contact-btn {
+    height: 25rem;
+  }
+}
+
+.form-group {
+  .form-class {
+    height: 70rem;
+  }
+}
 
 .container{
   max-width: 100%;

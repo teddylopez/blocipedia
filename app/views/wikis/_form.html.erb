@@ -5,7 +5,7 @@
     </div>
     <div class="form-group">
       <%= f.label :body %>
-      <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
+      <%= f.text_area :body, rows: 8, class: 'form-control form-class', placeholder: "Enter wiki body" %>
     </div>
     <% if current_user.admin? || current_user.premium? %>
       <div class="form-group">
@@ -16,7 +16,7 @@
       </div>
     <% end %>
     <div class="form-group">
-      <%= f.submit "Save", class: 'new-submit' %>
+      <%= f.submit "Save", class: 'save-btn' %>
     </div>
     <% if @wiki.private %>
       <%= render partial: 'collaborators/form', locals: { f: f } %>

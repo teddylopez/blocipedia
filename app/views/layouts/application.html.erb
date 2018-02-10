@@ -35,11 +35,12 @@
 <div class="wrapper">
   <nav>
       <%= link_to "home", root_path %>
+      <%= link_to "notes", wikis_path %>
       <%= link_to "contact", new_contact_path %>
       <% if user_signed_in? %>
-        <%= link_to "notes", wikis_path %>
-        <%= link_to "sign out", destroy_user_session_path, method: :delete, :class => 'logout' %>
+        <%= link_to "sign out", destroy_user_session_path, method: :delete, class: "logout" %>
       <% end %>
+
 
   <div class="user-nav">
     <% if user_signed_in? %>
@@ -50,8 +51,8 @@
         <% end %>
       </div>
     <% else %>
-      <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link' %>
-      <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link' %>
+      <%= link_to "sign up", new_user_registration_path, :class => 'navbar-link' %>
+      <%= link_to "sign in", new_user_session_path, :class => 'navbar-link' %>
     <% end %>
   </div>
   </nav>

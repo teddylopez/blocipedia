@@ -4,17 +4,17 @@
 
   <div class="contact-form">
     <%= form_for @contact do |f| %>
-      <%= f.text_field :name, required: true, placeholder: "Name" %>
+      <%= f.text_field :name, required: true, placeholder: "Name", class: "form-inputs" %>
       <br>
-      <%= f.email_field :email, required: true, placeholder: "Email" %>
+      <%= f.email_field :email, required: true, placeholder: "Email", class: "form-inputs" %>
       <br>
-      <%= f.text_field :phone, required: false, placeholder: "Phone Number" %>
+      <%= f.text_field :phone, required: false, placeholder: "Phone Number", class: "form-inputs" %>
       <br>
-      <%= f.text_area :message, as: :text, placeholder: "Message" %>
+      <%= f.text_area :message, as: :text, placeholder: "Message", class: "form-inputs contact-btn" %>
 
       <div class="hidden">
         <%= f.label :nickname %><br>
-        <%= f.text_field :nickname, hint: 'leave this field blank' %>
+        <%= f.text_field :nickname, hint: 'leave this field blank', class: "form-inputs" %>
       </div>
 
       <%= f.submit 'Send', id: "submit" %>
