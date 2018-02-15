@@ -7,7 +7,7 @@
       <%= f.label :body %>
       <%= f.text_area :body, rows: 8, class: 'form-control form-class', placeholder: "Enter wiki body" %>
     </div>
-    <% if current_user.admin? || current_user.premium? %>
+    <% if current_user.admin? || (current_user.premium? && current_user == wiki.user) %>
       <div class="form-group">
         <%= f.label :private, class: 'checkbox' do %>
           <%= f.check_box :private %>
