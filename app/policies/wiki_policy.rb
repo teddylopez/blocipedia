@@ -1,59 +1,63 @@
 class WikiPolicy < ApplicationPolicy
 
-    attr_reader :user
-
   def index?
-    user.present?
+    true
   end
 
-  def update?
-    user.present?
-  end
-
-  def destroy?
-    user.role == 'admin' || wiki.user == user
-  end
-
-  def new?
-    user.present?
+  def show?
+    user.present? #&& (!wiki.private || user.admin? || wiki.user_id = user.id)
   end
 
   def create?
     user.present?
   end
 
-  def edit?
-    user.present?
+  def update?
+    create?
   end
 
-  def show?
-    user.present? && (!wiki.private || user.admin? || wiki.user_id == user.id)
+  def edit?
+    case record.private
+      when false
+        true if user.present?
+      when true
+        true if user.present? && (user.admin? || record.user_id = user.id)
+      else
+        true
+      end
+  end
+
+  def new?
+    create?
+  end
+
+  def destroy?
+    user.present? && (user.admin? || record.user_id == user.id)
   end
 
   class Scope
-  attr_reader :user, :scope
+    attr_reader :user, :scope
+      def initialize(user, scope)
+        @user = user
+        @scope = scope
+      end
 
-  def initialize(user, scope)
-    @user = user
-    @scope = scope
-  end
-
-  def resolve
-    wikis = []
+    def resolve
+      wikis = []
       if user.role == 'admin'
         wikis = scope.all # if the user is an admin, show them all the wikis
-      elsif user.role == 'premium'
-        all_wikis = scope.all
-        all_wikis.each do |wiki|
-          if !wiki.private? || wiki.user == user || wiki.collaborators.include?(user)
-            wikis << wiki # if the user is premium, only show them public wikis, or that private wikis they created, or private wikis they are a collaborator on
-          end
+        elsif user.role == 'premium'
+          all_wikis = scope.all
+          all_wikis.each do |wiki|
+            if !wiki.private? || wiki.user_id == user.id || wiki.users.include?(user)
+              wikis << wiki # if the user is premium, only show them public wikis, or that private wikis they created, or private wikis they are a collaborator on
+            end
         end
       else # this is the lowly standard user
         all_wikis = scope.all
         wikis = []
         all_wikis.each do |wiki|
-          if !wiki.private? || wiki.collaborators.include?(user)
+          if !wiki.private? || wiki.users.include?(user)
             wikis << wiki # only show standard users public wikis and private wikis they are a collaborator on
           end
         end
@@ -61,5 +65,10 @@ class WikiPolicy < ApplicationPolicy
       wikis # return the wikis array we've built up
     end
   end
+
+  private
+    def wiki
+      record
+    end
 
 end

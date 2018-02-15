@@ -3,9 +3,9 @@ class WikisController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @wikis = policy_scope(Wiki.all.order("created_at DESC")).paginate(page: params[:page], per_page: 5)
     @user = current_user
-    @wikis = Wiki.all.order("created_at DESC")
-    @viewable_wikis = Wiki.find_view(@user, @wikis).paginate(page: params[:page], per_page: 5)
+    @viewable_wikis = Wiki.all.order("created_at DESC").paginate(page: params[:page], per_page: 5)
   end
 
   def search
