@@ -38,7 +38,7 @@
       <%= link_to "notes", wikis_path %>
       <%= link_to "contact", new_contact_path %>
       <% if user_signed_in? %>
-      <span class="login-name"><%= @current_user.email %></span>
+      <span class="login-name"><%= current_user.email %></span>
         <%= link_to "sign out", destroy_user_session_path, method: :delete, class: "logout" %>
       <% end %>
 
