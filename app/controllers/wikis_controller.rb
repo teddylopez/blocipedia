@@ -5,7 +5,6 @@ class WikisController < ApplicationController
   def index
     @wikis = policy_scope(Wiki.all.order("created_at DESC")).paginate(page: params[:page], per_page: 5)
     @user = current_user
-    @viewable_wikis = Wiki.all.order("created_at DESC").paginate(page: params[:page], per_page: 5)
   end
 
   def search

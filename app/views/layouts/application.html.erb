@@ -34,9 +34,9 @@
 
 <div class="wrapper">
   <nav>
-      <%= link_to "home", root_path %>
-      <%= link_to "notes", wikis_path %>
-      <%= link_to "contact", new_contact_path %>
+    <a href="/" onclick="tedmetrics.report('Home button clicked')">home</a>
+    <a href="/notes" onclick="tedmetrics.report('Notes button clicked')">notes</a>
+    <a href="/contacts/new" onclick="tedmetrics.report('Contact button clicked')">contact</a>
       <% if user_signed_in? %>
       <span class="login-name"><%= current_user.email %></span>
         <%= link_to "sign out", destroy_user_session_path, method: :delete, class: "logout" %>
